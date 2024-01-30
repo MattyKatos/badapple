@@ -9,7 +9,7 @@ const bot_token = process.env.DISCORD_BOT_TOKEN
 const guild_id = process.env.DISCORD_GUILD_ID
 
 //DELETE WHAT COMMAND?
-var command_id = '1168258185006686278'
+var command_id = '1201999967632494603'
 
 // Construct and prepare an instance of the REST module
 const rest = new REST({ version: '10' }).setToken(bot_token);
