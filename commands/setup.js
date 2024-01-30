@@ -8,7 +8,7 @@ module.exports = {
 	async execute(interaction) {
 		const DiscordID = interaction.user.id
 		const DiscordUsername = interaction.user.username
-		const userData = `{"DiscordID":"${DiscordID}","DiscordUsername":"${DiscordUsername}","Score":"0"}`
+		const userData = `{"DiscordID":"${DiscordID}","DiscordUsername":"${DiscordUsername}","Score":"0","IsAdmin":false}`
 		//Check to see if user exists
 		try
 		{
