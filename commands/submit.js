@@ -11,6 +11,7 @@ module.exports = {
 			.setRequired(true)),
 	async execute(interaction) {
 		const DiscordID = interaction.user.id
+		console.log(`[${DiscordID}] Submit => Start`)
 		//Check to see if user exists
 		try
 		{
@@ -19,6 +20,7 @@ module.exports = {
 		catch (e)
 		{
             interaction.reply({content:`You do not have an account, please create on with the /setup command.`, ephemeral: true});
+			console.log(`[${DiscordID}] Submit => FAIL - No account`)
 			return
 		}
 		var date = new Date()
@@ -46,6 +48,7 @@ module.exports = {
 			var videoData = JSON.parse(fs.readFileSync('./cache/videos/'+videoID+'.json'))
 			var parentUserData = JSON.parse(fs.readFileSync('./cache/videos/'+videoData.Parent+'.json'))
 			interaction.reply({content:`Video was submitted by ${parentUserData.DiscordUsername} on ${videoData.Date}.`, ephemeral: true});
+			console.log(`[${DiscordID}] Submit => SUCCESS - Already Submitted`)
 			return
 		}
 		catch (e)
@@ -55,6 +58,7 @@ module.exports = {
 			var newUserData = `{"DiscordID":"${userData.DiscordID}","DiscordUsername":"${userData.DiscordUsername}","Score":"${Number(userData.Score)+1}","IsAdmin":${userData.IsAdmin}}`
 			fs.writeFileSync(`./cache/users/${userData.DiscordID}.json`,newUserData)
 			interaction.reply({content:`${userData.DiscordUsername} just added a new Bad Apple Video! \n ID: ${videoID} \n ${link}`});
+			console.log(`[${DiscordID}] Submit => SUCCESS - added video ${videoID}`)
 		}
 		return
 	},
