@@ -26,6 +26,7 @@ module.exports = {
 		catch (e)
 		{
             interaction.reply({content:`The user ${userID} does not exist.`, ephemeral: true});
+			console.log(e)
 			return
 		}
 	},

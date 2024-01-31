@@ -25,6 +25,7 @@ module.exports = {
 		catch (e)
 		{
             interaction.reply({content:`You do not have an account, please create on with the /setup command.`, ephemeral: true});
+			console.log(e)
 			return
 		}
 		//Check to see if target user exists
@@ -35,6 +36,7 @@ module.exports = {
 		catch (e)
 		{
 			interaction.reply({content:`Target user doesn't have an account.`, ephemeral: true});
+			console.log(e)
 			return
 		}	
 		//Check to see if command user is admin. If True, make target user admin.

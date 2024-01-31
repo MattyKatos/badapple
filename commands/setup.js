@@ -20,6 +20,7 @@ module.exports = {
 		catch (e)
 		{
 			fs.writeFileSync('./cache/users/'+DiscordID+'.json',userData)
+			console.log(e)
             interaction.reply({content:'Account created!', ephemeral: true});
 		}
 	},

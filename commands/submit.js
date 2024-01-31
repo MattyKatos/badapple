@@ -37,6 +37,7 @@ module.exports = {
 		}
 		catch (e)
 		{
+			console.log(e)
             interaction.reply({content:`You do not have an account, please create on with the /setup command.`, ephemeral: true});
 			return
 		}
@@ -48,6 +49,7 @@ module.exports = {
 		}
 		catch (e)
 		{
+			console.log(e)
 			var videoData = `{"VideoID":"${videoID}","Parent":"${DiscordID}","Date":"${date}"}`
 			fs.writeFileSync('./cache/videos/'+videoID+'.json',videoData)
 			var newUserData = `{"DiscordID":"${userData.DiscordID}","DiscordUsername":"${userData.DiscordUsername}","Score":"${Number(userData.Score)+1}","IsAdmin":"${userData.IsAdmin}}`
