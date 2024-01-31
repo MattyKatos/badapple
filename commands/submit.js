@@ -41,7 +41,6 @@ module.exports = {
 		}
 		catch (e)
 		{
-			console.log(e)
             interaction.reply({content:`You do not have an account, please create on with the /setup command.`, ephemeral: true});
 			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - FAIL: User doesn\'t have an account')
 			return
@@ -49,7 +48,8 @@ module.exports = {
 		try
 		{
 			var videoData = JSON.parse(fs.readFileSync('./cache/videos/'+videoID+'.json'))
-			interaction.reply({content:`Video was submitted by ${userData.DiscordUsername} on ${videoData.Date}.`, ephemeral: true});
+			var parentUserData = JSON.parse(fs.readFileSync('./cache/videos/'+videoData.Parent+'.json'))
+			interaction.reply({content:`Video was submitted by ${parentUserData.DiscordUsername} on ${videoData.Date}.`, ephemeral: true});
 			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - PARTIAL SUCCESS: Video has already been submitted')
 			return
 		}
