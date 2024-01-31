@@ -10,7 +10,6 @@ module.exports = {
 			.setDescription(`Link to the video you want to submit.`)
 			.setRequired(true)),
 	async execute(interaction) {
-		var date = new Date()
 		const DiscordID = interaction.user.id
 		//Check to see if user exists
 		try
@@ -24,7 +23,7 @@ module.exports = {
 			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - FAIL: User doesn\'t have an account')
 			return
 		}
-		//Link Clean up
+		var date = new Date()
 		var link = interaction.options.getString('link')
 		var link2 = link.split("/")
 		var link3 = link2[3]
@@ -46,6 +45,7 @@ module.exports = {
 				interaction.reply({content:`Link Error`, ephemeral: true});
 			}
 		}
+
 		try
 		{
 			var videoData = JSON.parse(fs.readFileSync('./cache/videos/'+videoID+'.json'))
