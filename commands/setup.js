@@ -14,14 +14,14 @@ module.exports = {
 		{
 			fs.readFileSync('./cache/users/'+DiscordID+'.json')
 			interaction.reply({content:'Your account has aleady been set up.', ephemeral: true});
-			console.log('['+DiscordUsername+'#'+DiscordID+'] SETUP - 400: User already has an account')
+			console.log('['+DiscordUsername+'#'+DiscordID+'] SETUP - FAIL: User already has an account')
 			return
 		}
 		catch (e)
 		{
 			fs.writeFileSync('./cache/users/'+DiscordID+'.json',userData)
-			console.log(e)
             interaction.reply({content:'Account created!', ephemeral: true});
+			console.log('['+DiscordUsername+'#'+DiscordID+'] SETUP - SUCCESS: User account created')
 		}
 	},
 };

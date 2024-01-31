@@ -21,12 +21,13 @@ module.exports = {
 		{
 			userData = JSON.parse(fs.readFileSync('./cache/users/'+userID+'.json'))
 			interaction.reply({content:`${userData.DiscordUsername}'s current score is ${userData.Score}.`, ephemeral: true});
+			console.log('['+DiscordUsername+'#'+DiscordID+'] SCORE - SUCCESS: User Score returned')
 			return
 		}
 		catch (e)
 		{
             interaction.reply({content:`The user ${userID} does not exist.`, ephemeral: true});
-			console.log(e)
+			console.log('['+DiscordUsername+'#'+DiscordID+'] SCORE - FAIL: User doesn\'t have an account')
 			return
 		}
 	},
