@@ -11,6 +11,20 @@ module.exports = {
 			.setRequired(true)),
 	async execute(interaction) {
 		var date = new Date()
+		const DiscordID = interaction.user.id
+		//Check to see if user exists
+		try
+		{
+			userData = JSON.parse(fs.readFileSync('./cache/users/'+DiscordID+'.json'))
+			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - WORKING: User has an account')
+		}
+		catch (e)
+		{
+            interaction.reply({content:`You do not have an account, please create on with the /setup command.`, ephemeral: true});
+			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - FAIL: User doesn\'t have an account')
+			return
+		}
+		//Link Clean up
 		var link = interaction.options.getString('link')
 		var link2 = link.split("/")
 		var link3 = link2[3]
@@ -31,19 +45,6 @@ module.exports = {
 				console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - FAIL: User submitted link caused an error')
 				interaction.reply({content:`Link Error`, ephemeral: true});
 			}
-		}
-		const DiscordID = interaction.user.id
-		//Check to see if user exists
-		try
-		{
-			userData = JSON.parse(fs.readFileSync('./cache/users/'+DiscordID+'.json'))
-			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - WORKING: User has an account')
-		}
-		catch (e)
-		{
-            interaction.reply({content:`You do not have an account, please create on with the /setup command.`, ephemeral: true});
-			console.log('['+DiscordUsername+'#'+DiscordID+'] SUBMIT - FAIL: User doesn\'t have an account')
-			return
 		}
 		try
 		{
