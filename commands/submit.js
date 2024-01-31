@@ -24,7 +24,9 @@ module.exports = {
 			console.log(`[${DiscordUsername}#${DiscordID}] Submit => FAIL - No account`)
 			return
 		}
+		//Get Current Date
 		var date = new Date()
+		//Handle Link
 		var link = interaction.options.getString('link')
 		var link2 = link.split("/")
 		var link3 = link2[3]
@@ -43,7 +45,7 @@ module.exports = {
 				interaction.reply({content:`Link Error`, ephemeral: true});
 			}
 		}
-
+		//Has Video been submitted?
 		try
 		{
 			var videoData = JSON.parse(fs.readFileSync('./cache/videos/'+videoID+'.json'))
