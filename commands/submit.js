@@ -52,7 +52,7 @@ module.exports = {
 			console.log(e)
 			var videoData = `{"VideoID":"${videoID}","Parent":"${DiscordID}","Date":"${date}"}`
 			fs.writeFileSync('./cache/videos/'+videoID+'.json',videoData)
-			var newUserData = `{"DiscordID":"${userData.DiscordID}","DiscordUsername":"${userData.DiscordUsername}","Score":"${Number(userData.Score)+1}","IsAdmin":"${userData.IsAdmin}}`
+			var newUserData = `{"DiscordID":"${userData.DiscordID}","DiscordUsername":"${userData.DiscordUsername}","Score":"${Number(userData.Score)+1}","IsAdmin":${userData.IsAdmin}}`
 			fs.writeFileSync(`./cache/users/${userData.DiscordID}.json`,newUserData)
 			interaction.reply({content:`${userData.DiscordUsername} just added a new Bad Apple Video! \n ID: ${videoID} \n ${link}`});
 		}
